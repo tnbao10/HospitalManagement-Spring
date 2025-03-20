@@ -27,7 +27,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/aea733e5-d99f-4d57-9e1d-5eebb31a3196" width=900 ><br/>
 </p> <br>
-[![image]()]()
 
 
 <h4> - On the Doctor Management Page, admin can create doctor accounts and view the list of doctors. Admin can also update and delete doctor account</h4>
@@ -92,6 +91,11 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f3b3f733-611e-499f-b199-8bff984d66c0" width=900 >
 </p> <br>
+
+## Contact Me 
+<p align="center">
+  Thanks for visit my project, if you need further information, please contact me via email: <a href="mailto:tnbao1009@gmail.com">tnbao1009@gmail.com</a>
+</p>
 
 
 
