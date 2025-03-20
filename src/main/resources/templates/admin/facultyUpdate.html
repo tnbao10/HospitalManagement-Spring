@@ -1,0 +1,35 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Update Faculty', ~{this :: .pc-container})}">
+
+<head>
+	<title>Update Faculty</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<!-- Add Faculty -->
+			<form method="POST" th:action="@{/admin/update-faculty}">
+			  <div class="mb-3">
+			    <h4>Update Faculty</h4>
+				<th:block th:text="${msg}"></th:block>
+				<input type="text" class="form-control" th:field="${faculty.id}" readonly>
+				<br>
+			    <input type="text" class="form-control" th:field="${faculty.name}">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Update</button>
+			</form>
+			
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

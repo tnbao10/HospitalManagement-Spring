@@ -1,0 +1,52 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Update Doctor', ~{this :: .pc-container})}">
+
+<head>
+	<title>Update Doctor</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<!-- Update Doctor -->
+			<form method="post" th:action="@{/admin/update-doctor}">
+				<div class="mb-3">
+					<h4>Update Doctor</h4>
+					<th:block th:text="${msg}"></th:block>
+					<br>
+					<label>Email</label>
+					<input type="text" class="form-control" th:field="${account.email}" readonly>
+					<br>
+					<label>Password</label>
+					<input type="password" class="form-control" th:field="${account.password}">
+					<br>
+					<label>Full name</label>
+					<input type="text" class="form-control" th:field="${account.fullName}">
+					<br>
+					<label>Date of Birth</label>
+					<input type="text" class="form-control" th:field="${account.dob}">
+					<br>
+					<label>Faculty</label>
+					<select th:field="${account.faculty.id}" class="form-control">
+					  <option th:each="faculty : ${faculties}" th:value="${faculty.id}" th:text="${faculty.name}">
+					  </option>
+					</select>
+
+				</div>
+				<button type="submit" class="btn btn-primary">Update</button>
+				<input type="hidden" class="form-control" th:field="${account.id}">
+			</form>
+
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

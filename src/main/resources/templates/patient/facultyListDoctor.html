@@ -1,0 +1,57 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Doctor Management', ~{this :: .pc-container})}">
+
+<head>
+	<title>Admin - Doctor Management</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			
+
+			<br><br>
+
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<h4 class="mb-3">Doctor Management</h4>
+				<th:block th:text="${msg}"></th:block>
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Fullname</th>
+										<th>Email</th>
+										<th>Date of birth</th>
+										<th>Faculty</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="doctor : ${doctors}">
+										<td th:text="${doctor.fullName}"></td>
+										<td th:text="${doctor.email}"></td>
+										<td th:text="${doctor.dob}"></td>
+										<td th:text="${doctor.faculty != null ? doctor.faculty.name : 'No Faculty'}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

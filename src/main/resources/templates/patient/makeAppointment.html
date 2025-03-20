@@ -1,0 +1,76 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Patient - Make Appointment', ~{this :: .pc-container})}">
+
+<head>
+	<title>Patient - Make Appointment</title>
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<div class="container-fluid">
+
+				<!-- Header Starts -->
+				<div class="row">
+					<div class="col-sm-12 p-0">
+						<div class="main-header">
+							<h4>Table</h4>
+							<ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+								<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/patient"> <i
+											class="icofont icofont-home"></i>
+									</a></li>
+								<li class="breadcrumb-item"><a href="#">Make An Appointment</a></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- Header end -->
+
+				<!-- FORM START -->
+				<div style="text-align: center; margin-top: 50px;">
+					<h2 style="margin-bottom: 15px">Make An Appointment With Doctor</h2>
+
+					<form method="post" th:action="@{/patient/make-appointment}"
+						style="display: inline-block; text-align: left; padding: 50px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 60%; max-width: 800px;">
+						<th:block th:text="${msg}"></th:block>
+						<br>
+						<label class="block form-control-label">Choose Doctor you want:</label>
+						<select id="doctor" name="doctorId" class="form-control">
+							<option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.fullName}">
+							</option>
+						</select>
+						<br>
+
+						<label class="block form-control-label">Date</label>
+						<input type="date" class="form-control" th:field="${appointment.date}">
+						<br>
+
+						<label class="block form-control-label">Time</label>
+						<input type="time" class="form-control" th:field="${appointment.time}">
+						<br>
+						<label class="block form-control-label">Content</label>
+						<textarea rows="4" cols="36" class="form-control" th:field="${appointment.content}"></textarea>
+
+						<br>
+
+						<button type="submit" class="btn btn-success">Make An Appointment</button>
+					</form>
+
+				</div>
+
+				<!-- FORM START -->
+
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

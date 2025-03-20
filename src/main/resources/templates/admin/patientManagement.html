@@ -1,0 +1,58 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Patient Management', ~{this :: .pc-container})}">
+
+<head>
+	<title>Admin - Patient Management</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<h5 class="mb-3">Patient Management</h5>
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Fullname</th>
+										<th>Email</th>
+										<th>Date of birth</th>
+										<th>Phone Number</th>
+										<th>Address</th>
+										<th>Details</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="patient : ${patients}">
+										<td th:text="${patient.fullName}"></td>
+										<td th:text="${patient.email}"></td>
+										<td th:text="${patient.dob}"></td>
+										<td th:text="${patient.phone}"></td>
+										<td th:text="${patient.address}"></td>
+										<td>
+											<a class="btn btn-outline-dark text-dark" th:href="@{'/admin/patient-medical-appointment/' + ${patient.id}}">Medical Appointment</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

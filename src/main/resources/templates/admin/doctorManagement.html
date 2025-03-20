@@ -1,0 +1,92 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Doctor Management', ~{this :: .pc-container})}">
+
+<head>
+	<title>Admin - Doctor Management</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<!-- Add Doctor -->
+			<form method="POST" th:action="@{/admin/add-doctor}">
+				<div class="mb-3">
+					<h4>Add New Doctor</h4>
+					<label>Email</label>
+					<input type="text" class="form-control" th:field="${account.email}">
+					<br>
+					<label>Password</label>
+					<input type="password" class="form-control" th:field="${account.password}">
+					<br>
+					<label>Full name</label>
+					<input type="text" class="form-control" th:field="${account.fullName}">
+					<br>
+					<label>Date of Birth</label>
+					<input type="date" class="form-control" th:field="${account.dob}">
+					<br>
+					<label>Faculty</label>
+					<select th:field="${account.faculty.id}" class="form-control">
+						<option th:each="faculty : ${faculties}" th:value="${faculty.id}" th:text="${faculty.name}">
+						</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</form>
+
+			<br><br>
+
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<h4 class="mb-3">Doctor Management</h4>
+				<th:block th:text="${msg}"></th:block>
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Fullname</th>
+										<th>Email</th>
+										<th>Date of birth</th>
+										<th>Faculty</th>
+										<th>Details</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="doctor : ${doctors}">
+										<td th:text="${doctor.fullName}"></td>
+										<td th:text="${doctor.email}"></td>
+										<td th:text="${doctor.dob}"></td>
+										<td th:text="${doctor.faculty != null ? doctor.faculty.name : 'No Faculty'}"></td>
+										<td>
+											<a class="btn btn-outline-dark text-dark" th:href="@{'/admin/doctor-medical-appointment/' + ${doctor.id}}">Medical Appointment</a>
+										</td>
+										<td>
+											<a class="btn btn-primary text-white" th:href="@{'/admin/update-doctor/' + ${doctor.id}}">Update</a>
+										</td>
+										<td>
+											<a class="btn btn-danger" th:href="@{'/admin/delete-doctor/' + ${doctor.id}}"> <i class="fas fa-trash"></i> </a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

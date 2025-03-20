@@ -1,0 +1,52 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Patient - Faculty List', ~{this :: .pc-container})}">
+
+<head>
+	<title>Patient - Faculty List</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<h4 class="mb-3">Faculty List</h4>
+				<th:block th:text="${msg}"></th:block>
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Faculty</th>
+										<th>Details</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="faculty : ${faculties}">
+										<td th:text="${faculty.name}"></td>
+										<td>
+											<a class="btn btn-primary text-white" th:href="@{'/patient/doctor-faculty-list/' + ${faculty.id}}">More Details</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

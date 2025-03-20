@@ -1,0 +1,84 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Doctor - Doctor - Appontment Medical', ~{this :: .pc-container})}">
+
+<head>
+	<title>Doctor - Appontment Medical</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+			<h5 class="mb-3">Doctor 's Medical Appointment</h5>
+
+			<!-- Find By Range Date -->
+			<div class="row mb-3" style="margin-left: 20px">
+				<div class="col-md-12">
+					<form method="GET" th:action="@{'/admin/search-by-dates-doctor-appointment'}">
+						<div class="row">
+							<div class="col-md-4">
+								<label class="form-label">Start Date</label>
+								<input type="date" class="form-control" name="startDate" />
+							</div>
+							<div class="col-md-4">
+								<label class="form-label">End Date</label>
+								<input type="date" class="form-control" name="endDate" />
+							</div>
+
+							<div style="margin-top: 31px" class="col-md-4 d-flex align-items-end">
+								<button type="submit" class="btn btn-outline-dark">Search By Range Date</button>
+								<input type="hidden" name="doctorId" th:value="${doctorId}">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Sort By Newest Date -->
+				<form method="GET" th:action="@{/admin/search-by-dates-doctor-appointment-desc}">
+					<button type="submit" class="btn btn-outline-dark" style="margin-left: 30px; margin-top: 50px">Sort By
+						Newest</button>
+					<input type="hidden" name="doctorId" th:value="${doctorId}">
+				</form>
+
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Doctor's Name</th>
+										<th>Patient's Name</th>
+										<th>Date</th>
+										<th>Time</th>
+										<th>Content</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="appointment : ${appointments}">
+										<td th:text="${appointment.accountByDoctorId.fullName}"></td>
+										<td th:text="${appointment.accountByPatientId.fullName}"></td>
+										<td th:text="${#dates.format(appointment.date, 'dd/MM/yyyy')}"></td>
+										<td th:text="${#dates.format(appointment.time, 'HH:mm')}"></td>
+										<td th:text=${appointment.content}></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>

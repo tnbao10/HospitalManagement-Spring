@@ -1,0 +1,67 @@
+<!-- Khai báo namespace của thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout :: layout('Admin - Faculty Management', ~{this :: .pc-container})}">
+
+<head>
+	<title>Admin - Faculty Management</title>
+
+</head>
+
+<body>
+
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		<div class="pc-content">
+
+			<!-- Add Faculty -->
+			<form method="POST" th:action="@{/admin/add-faculty}">
+			  <div class="mb-3">
+			    <h4>Add New Faculty</h4>
+			    <input type="text" class="form-control" th:field="${faculty.name}">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Add</button>
+			</form>
+			<!-- [ Main Content ] start -->
+			<div class="row">
+				<h4 class="mb-3">Faculty Management</h4>
+				<th:block th:text="${msg}"></th:block>
+				<div class="card tbl-card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-borderless mb-0">
+								<thead>
+									<tr>
+										<th>Faculty</th>
+										<th>Details</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="faculty : ${faculties}">
+										<td th:text="${faculty.name}"></td>
+										<td>
+											<a class="btn btn-outline-dark text-dark"
+											>Faculty's Medical Appointment</a>
+										</td>
+										<td>
+											<a class="btn btn-primary text-white" th:href="@{'/admin/update-faculty/' + ${faculty.id}}">Update</a>
+										</td>
+										<td>
+											<a class="btn btn-danger" th:href="@{'/admin/delete-faculty/' + ${faculty.id}}"> <i class="fas fa-trash"></i> </a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+</body>
+
+</html>
