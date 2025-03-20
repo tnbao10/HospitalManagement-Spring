@@ -1,3 +1,5 @@
+ ## Hospital Management System
+
 <h3> Hospital Management System is web system for managing hospital operations, allowing admins to oversee faculties, doctors, and patients, while enabling doctors to manage appointments and patients to book consultations and view medical histories. </h3>
 <p> - Admin:  Manage faculties, doctors, patients, schedules, and accounts. </p>
 <p> - Support Staff: Manage their account and view or search their schedules and contact with patients. </p>
